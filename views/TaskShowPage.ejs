@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADMIN Panel - Task Managment System</title>
+    <style>
+      * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+      }
+      h1 {
+        text-align: center;
+        margin: 10px auto;
+        font-family: poppins;
+      }
+      div {
+        margin: 10px auto;
+        width: 70%;
+        text-align: center;
+        background-color: black;
+        padding: 10px;
+        font-family: poppins;
+        color: white;
+      }
+      div table {
+            border-collapse: collapse;
+            width: 100%;
+      }
+      div td,th{
+        border: 2px solid white;
+        padding: 10px 20px;
+      }
+      nav{
+        height: 100px;
+        width: 100%;
+        background-color: black;
+        display: flex;
+        justify-content: space-between !important;
+        /* padding: 0px 10px !important; */
+        color: white;
+        align-items: center;
+      }
+      nav div:first-child{
+        width: 10%;
+      }
+      nav div{
+        width: 20%;
+      }
+      nav div img{
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      nav div{
+        display: flex;
+        align-items: center;
+      }
+      nav div h2{
+          color: white !important;
+      }
+      nav div a{
+        padding: 0px 10px;
+        color: white;
+        margin-left: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div>
+        <h1>TMS</h1>
+      </div>
+      <div class="users">
+        <img src="https://static.vecteezy.com/system/resources/previews/018/765/757/original/user-profile-icon-in-flat-style-member-avatar-illustration-on-isolated-background-human-permission-sign-business-concept-vector.jpg" alt="">
+        <h2><%= users[0].username %></h2>
+        <h3> <a href="/user/login">Logout</a></h3>
+      </div>
+    </nav>
+    <h1>User - Task Managment</h1>
+    <div>
+      <table>
+       <thead>
+        <tr>
+            <th>Task Name</th>
+            <th>Task Desc</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+          </tr>
+       </thead>
+       <tbody>
+        <% task.forEach(function(task) { %>
+          <tr>
+            <td><%= task.task_name %></td>
+            <td><%= task.description %> </td>
+            <td><%= task.start_date %></td>
+            <td><%= task.end_date %></td>
+            
+          </tr>
+          <% }) %>
+       </tbody>
+      </table>
+    </div>
+    
+  </body>
+</html>

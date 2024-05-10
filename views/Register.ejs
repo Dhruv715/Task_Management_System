@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        div{
+            margin: 50px auto;
+            width: 30%;
+            text-align: center;
+            background-color: black;
+            padding: 10px;
+            font-family: poppins;
+            color: white;
+        }
+        div form input{
+            padding: 10px 20px;
+            
+        }
+        div form{
+            margin: 10px 0px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>SignUp</h1>
+    <form method="post">
+            <input type="text" name="name" placeholder="enter your name..">
+            <br>
+            <br>
+            <input type="email" name="email" placeholder="enter your email..">
+            <br>
+            <br>
+            <input type="password" name="password" placeholder="enter password here..">
+            <br>
+            <br>
+                <p>I Have Already Account <a href="/user/login">Login</a></p>
+            <br>
+
+            <input type="submit" value="signup">
+    </form>
+    </div>
+</body>
+</html>

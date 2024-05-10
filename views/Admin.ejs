@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADMIN Panel - Task Managment System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css" integrity="sha512-OQDNdI5rpnZ0BRhhJc+btbbtnxaj+LdQFeh0V9/igiEPDiWE2fG+ZsXl0JEH+bjXKPJ3zcXqNyP4/F/NegVdZg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+      }
+      h1 {
+        text-align: center;
+        margin: 10px auto;
+        font-family: poppins;
+      }
+      div {
+        margin: 10px auto;
+        width: 50%;
+        text-align: center;
+        background-color: black;
+        padding: 10px;
+        font-family: poppins;
+        color: white;
+      }
+      div form input {
+        padding: 10px 20px;
+        margin: 10px 0px;
+        width: 50%;
+      }
+      div form input:first-child{
+        width: 100%;
+      }
+      div form {
+        margin: 10px 0px;
+        text-align: center;
+      }
+      div form input:last-child {
+        background-color: gray;
+        color: white;
+        font-size: 1.2rem;
+        width: 50%;
+        margin: 10px auto;
+      }
+      .semitbl {
+        margin: 10px auto;
+        width: 100%;
+        text-align: center;
+        background-color: black;
+        /* padding: 10px; */
+        font-family: poppins;
+        color: white;
+      }
+      .semitbl table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      .semitbl td,
+      th {
+        border: 2px solid white;
+        padding: 10px 20px;
+      }
+      nav{
+        height: 100px;
+        width: 100%;
+        background-color: black;
+        display: flex;
+        justify-content: space-between !important;
+        /* padding: 0px 10px !important; */
+        color: white;
+        align-items: center;
+      }
+      nav div:first-child{
+        width: 10%;
+      }
+      nav div{
+        width: 20%;
+      }
+      nav div img{
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      nav div{
+        display: flex;
+        align-items: center;
+      }
+      nav div h2{
+          color: white !important;
+      }
+      nav div a{
+        padding: 0px 10px;
+        color: white;
+        margin-left: 30px;
+      }
+      nav .middle{
+            width: 50%;
+            text-align: center !important;
+      }
+      table a{
+        text-decoration: none;
+        color: white;
+        padding: 10px;
+        font-size: 1.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+        <div>
+          <h1>TMS</h1>
+        </div>
+        <div class="middle">
+            <h3> <a href="/admin/TaskManage">Home</a></h3>
+            <h3> <a href="/admin/register">Add New Admin</a></h3>
+            <h3> <a href="/admin/Login">Logout</a></h3>
+        </div>
+        <div class="users">
+          <img src="https://static.vecteezy.com/system/resources/previews/018/765/757/original/user-profile-icon-in-flat-style-member-avatar-illustration-on-isolated-background-human-permission-sign-business-concept-vector.jpg" alt="">
+          <h2><%= adminname[0].name %></h2>   
+        </div>
+      </nav>
+    <h1>Admin Panel - Task Managment</h1>
+    <div>
+      <form method="post">
+        
+        <select name="userid" >
+            <option value="">Select Employee Id</option>
+            <% users.forEach(function(user) { %>
+                <option value="<%= user.user_id %>"><%= user.username %></option>
+            <% }) %>
+        </select>
+        
+        <br />
+        <input type="text" name="task_name" placeholder="enter task name.." />
+        <br />
+        <input
+          type="text"
+          name="description"
+          placeholder="enter task description.."
+        />
+        <br />
+        <input type="date" name="start_date" />
+        <br />
+        <input type="date" name="end_date" />
+        <br />
+        <input type="submit" name="Assign Task" />
+      </form>
+    </div>
+    <div class="semitbl">
+      <table>
+        <thead>
+          <tr>
+            <th>Employee ID</th>
+            <th>Task Name</th>
+            <th>Task Desc</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% task.forEach(function(task) { %>
+              <tr>
+                  <td><%= task.username %></td>
+                  <td><%= task.task_name %></td>
+                  <td><%= task.description %></td>
+                  <td><%= new Date(task.start_date).toLocaleDateString() %></td>
+                  <td><%= new Date(task.end_date).toLocaleDateString() %></td>
+                  <td>
+                      <a href="/admin/delete/<%= task.task_id%>">
+                        <i class="ri-delete-bin-6-line"></i>
+                      </a>
+                      <a href="/admin/update/<%= task.task_id%>">
+                        <i class="ri-edit-2-line"></i>
+                      </a>
+                  </td>
+              </tr>
+          <% }) %>
+      </tbody>
+      </table>
+    </div>
+  </body>
+</html>
